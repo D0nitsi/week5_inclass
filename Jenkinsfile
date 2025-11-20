@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven3'
+        maven 'maven3'
     }
 
     environment {
      PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         SONARQUBE_SERVER = 'SonarQubeServer'  // The name of the SonarQube server configured in Jenkins
-        SONAR_TOKEN = 'sqa_4a9cd5ae8e65c1d8a59395010075d01f8b60170e' // Store the token securely
+        SONAR_TOKEN = 'sqa_461391bed8e3ec3c3c16f2f029d8894b0f64fe07' // Store the token securely
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
         DOCKERHUB_REPO = 'donikojovic/inclass'
         DOCKER_IMAGE_TAG = 'latest'
@@ -32,7 +32,7 @@ pipeline {
                     steps {
                         withSonarQubeEnv('SonarQubeServer') {
                             bat """
-                                ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
+                                 sonar-scanner ^
                                 -Dsonar.projectKey=devops-demo ^
                                 -Dsonar.sources=src ^
                                 -Dsonar.projectName=DevOps-Demo ^
